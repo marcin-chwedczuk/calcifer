@@ -45,14 +45,9 @@ public class App extends Application {
         return hostServices;
     }
 
-    // application stage is stored so that it can be shown and hidden based on system tray icon operations.
     private Stage stage;
-
-    // a timer allowing the tray icon to provide a periodic notification event.
-    private Timer notificationTimer = new Timer();
-
-    // format used to display the current time in a tray icon notification.
-    private DateFormat timeFormat = SimpleDateFormat.getTimeInstance();
+    private java.awt.SystemTray tray;
+    private java.awt.TrayIcon trayIcon;
 
     // sets up the javafx application.
     // a tray icon is setup for the icon, but the main stage remains invisible until the user
@@ -100,11 +95,11 @@ public class App extends Application {
             }
 
             // set up a system tray icon.
-            java.awt.SystemTray tray = java.awt.SystemTray.getSystemTray();
+            this.tray = java.awt.SystemTray.getSystemTray();
             URL imageLoc = App.class.getResource("icons/calendar.png");
             java.awt.Image image = ImageIO.read(imageLoc);
             BufferedImage icon2 = TrayIconPainter.textToImage("01 January 2000");
-            java.awt.TrayIcon trayIcon = new java.awt.TrayIcon(icon2);
+            this.trayIcon = new java.awt.TrayIcon(icon2);
 
             // if the user double-clicks on the tray icon, show the main app stage.
             trayIcon.addActionListener(event -> Platform.runLater(this::showStage));
@@ -113,6 +108,10 @@ public class App extends Application {
                 public void mouseClicked(MouseEvent e) {
                     if (e.getClickCount() == 1) {
                         Platform.runLater(() -> showStage());
+                    } else if (e.getClickCount() == 2) {
+                        Platform.exit();
+                        // Must be called on Swing Thread
+                        tray.remove(trayIcon);
                     }
                 }
             });
@@ -133,7 +132,6 @@ public class App extends Application {
             // tray icon (removing the tray icon will also shut down AWT).
             java.awt.MenuItem exitItem = new java.awt.MenuItem("Exit");
             exitItem.addActionListener(event -> {
-                notificationTimer.cancel();
                 Platform.exit();
                 tray.remove(trayIcon);
             });
@@ -146,6 +144,7 @@ public class App extends Application {
             // trayIcon.setPopupMenu(popup);
 
             // create a timer which periodically displays a notification message.
+            /*
             notificationTimer.schedule(
                     new TimerTask() {
                         @Override
@@ -161,7 +160,7 @@ public class App extends Application {
                     },
                     5_000,
                     60_000
-            );
+            );*/
 
             // add the application tray icon to the system tray.
             tray.add(trayIcon);

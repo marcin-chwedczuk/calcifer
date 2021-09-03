@@ -1,0 +1,11 @@
+- Dynamically set current date in Tray
+- Add icon to tray
+- Better text quality in tray
+
+- Remove application from Dock
+
+- Position window
+- Add window border (maybe?)
+
+- Test on multiple screens
+- Test on sleep recover
