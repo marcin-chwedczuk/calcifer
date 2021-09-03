@@ -9,3 +9,6 @@
 
 - Test on multiple screens
 - Test on sleep recover
+
+- Take list of Polish holidays - https://www.nbp.pl/homen.aspx?f=/en/onbp/organizacja/schedule.html
+  (Think about more generic service if you want to make this app popular - other countries)
