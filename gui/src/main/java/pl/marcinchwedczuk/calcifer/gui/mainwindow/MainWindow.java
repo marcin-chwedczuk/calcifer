@@ -6,6 +6,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.MenuBar;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import pl.marcinchwedczuk.calcifer.gui.aboutdialog.AboutDialog;
 
 import java.io.IOException;
@@ -23,6 +24,7 @@ public class MainWindow implements Initializable {
 
             Scene scene = new Scene(loader.load());
 
+            // window.initStyle(StageStyle.UNDECORATED);
             window.setTitle("calcifer");
             window.setScene(scene);
             window.setResizable(true);
