@@ -2,7 +2,7 @@
 - Add icon to tray
 - Better text quality in tray
 
-- Remove application from Dock
+- [DONE] Remove application from Dock
 
 - Position window
 - Add window border (maybe?)

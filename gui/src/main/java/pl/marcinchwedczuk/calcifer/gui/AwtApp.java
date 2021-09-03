@@ -12,7 +12,7 @@ import java.io.IOException;
 
 public class AwtApp {
     static {
-        System.setProperty("prism.lcdtext", "false");
+        //System.setProperty("prism.lcdtext", "false");
 
         // This is awt property which enables dock-icon-less
         // applications

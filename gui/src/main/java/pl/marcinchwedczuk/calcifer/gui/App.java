@@ -93,8 +93,9 @@ public class App extends Application {
             BufferedImage icon2 = TrayIconPainter.textToImage("01 January 2000");
             this.trayIcon = new java.awt.TrayIcon(icon2);
 
+
+
             // if the user double-clicks on the tray icon, show the main app stage.
-            trayIcon.addActionListener(event -> Platform.runLater(this::showStage));
             trayIcon.addMouseListener(new MouseAdapter() {
                 @Override
                 public void mouseClicked(MouseEvent e) {
