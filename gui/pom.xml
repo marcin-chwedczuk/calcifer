@@ -16,7 +16,7 @@
 
     <properties>
         <!-- Values needed to create installers -->
-        <main-class>pl.marcinchwedczuk.calcifer.gui/pl.marcinchwedczuk.calcifer.gui.App</main-class>
+        <main-class>pl.marcinchwedczuk.calcifer.gui/pl.marcinchwedczuk.calcifer.gui.AwtApp</main-class>
         <app.name>calcifer</app.name>
         <app.version>1.0.0</app.version>
         <windows.upgrade.uuid>54c286aa-c3a4-4fdc-8cfe-76a5739b1cc6</windows.upgrade.uuid>
@@ -257,28 +257,6 @@
         </profile>
 
         <!-- Select the right platform to generate installers -->
-        <profile>
-            <id>unix-active</id>
-            <activation>
-                <os>
-                    <family>unix</family>
-                </os>
-            </activation>
-            <properties>
-                <platform>linux</platform>
-            </properties>
-        </profile>
-        <profile>
-            <id>windows-active</id>
-            <activation>
-                <os>
-                    <family>windows</family>
-                </os>
-            </activation>
-            <properties>
-                <platform>win</platform>
-            </properties>
-        </profile>
         <profile>
             <id>mac-active</id>
             <activation>

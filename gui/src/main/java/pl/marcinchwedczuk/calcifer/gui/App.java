@@ -61,7 +61,6 @@ public class App extends Application {
 
         App.hostServices = this.getHostServices();
 
-        // stores a reference to the stage.
         this.stage = stage;
 
         // instructs the javafx system not to exit implicitly when the last application window is shut.
@@ -69,13 +68,6 @@ public class App extends Application {
 
         // sets up the tray icon (using awt code run on the swing thread).
         javax.swing.SwingUtilities.invokeLater(this::addAppToTray);
-
-        // out stage will be translucent, so give it a transparent style.
-        stage.initStyle(StageStyle.TRANSPARENT);
-
-        // a scene with a transparent fill is necessary to implement the translucent app window.
-        // Scene scene = new Scene(layout);
-        //scene.setFill(Color.TRANSPARENT);
 
         MainWindow.show(stage);
     }
@@ -86,7 +78,7 @@ public class App extends Application {
     private void addAppToTray() {
         try {
             // ensure awt toolkit is initialized.
-            java.awt.Toolkit.getDefaultToolkit();
+            // java.awt.Toolkit.getDefaultToolkit();
 
             // app requires system tray support, just exit if there is no support.
             if (!java.awt.SystemTray.isSupported()) {
@@ -116,57 +108,21 @@ public class App extends Application {
                 }
             });
 
-            // if the user selects the default menu item (which includes the app name),
-            // show the main app stage.
-            java.awt.MenuItem openItem = new java.awt.MenuItem("hello, world");
-            openItem.addActionListener(event -> Platform.runLater(this::showStage));
-
-            // the convention for tray icons seems to be to set the default icon for opening
-            // the application stage in a bold font.
-            java.awt.Font defaultFont = java.awt.Font.decode(null);
-            java.awt.Font boldFont = defaultFont.deriveFont(java.awt.Font.BOLD);
-            openItem.setFont(boldFont);
-
-            // to really exit the application, the user must go to the system tray icon
-            // and select the exit option, this will shutdown JavaFX and remove the
-            // tray icon (removing the tray icon will also shut down AWT).
-            java.awt.MenuItem exitItem = new java.awt.MenuItem("Exit");
-            exitItem.addActionListener(event -> {
-                Platform.exit();
-                tray.remove(trayIcon);
-            });
-
-            // setup the popup menu for the application.
-            final java.awt.PopupMenu popup = new java.awt.PopupMenu();
-            popup.add(openItem);
-            popup.addSeparator();
-            popup.add(exitItem);
-            // trayIcon.setPopupMenu(popup);
-
-            // create a timer which periodically displays a notification message.
             /*
-            notificationTimer.schedule(
-                    new TimerTask() {
-                        @Override
-                        public void run() {
-                            javax.swing.SwingUtilities.invokeLater(() ->
+            javax.swing.SwingUtilities.invokeLater(() ->
                                     trayIcon.displayMessage(
                                             "hello",
                                             "The time is now " + timeFormat.format(new Date()),
                                             java.awt.TrayIcon.MessageType.INFO
                                     )
                             );
-                        }
-                    },
-                    5_000,
-                    60_000
-            );*/
+             */
 
-            // add the application tray icon to the system tray.
             tray.add(trayIcon);
         } catch (AWTException | IOException e) {
             System.out.println("Unable to init system tray");
             e.printStackTrace();
+            Platform.exit();
         }
     }
 
@@ -185,6 +141,8 @@ public class App extends Application {
     }
 
     public static void main(String[] args) throws IOException, java.awt.AWTException {
+
+
         // Just launches the JavaFX application.
         // Due to way the application is coded, the application will remain running
         // until the user selects the Exit menu option from the tray icon.

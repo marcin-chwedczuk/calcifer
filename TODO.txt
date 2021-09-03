@@ -10,5 +10,9 @@
 - Test on multiple screens
 - Test on sleep recover
 
+- Nice application icon pack
+
 - Take list of Polish holidays - https://www.nbp.pl/homen.aspx?f=/en/onbp/organizacja/schedule.html
   (Think about more generic service if you want to make this app popular - other countries)
+
+- Customize Info.plist

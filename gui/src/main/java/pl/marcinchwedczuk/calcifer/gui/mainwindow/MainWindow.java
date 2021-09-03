@@ -30,7 +30,7 @@ public class MainWindow implements Initializable {
 
             Scene scene = new Scene(loader.load());
 
-            // window.initStyle(StageStyle.UNDECORATED);
+            window.initStyle(StageStyle.UNDECORATED);
             window.setTitle("calcifer");
             window.setScene(scene);
             window.setResizable(true);

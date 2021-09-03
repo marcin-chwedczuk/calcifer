@@ -4,6 +4,7 @@
 --module ${main-class}
 --type dmg
 --runtime-image ${project.build.directory}/gui
+--resource-dir ${project.basedir}/src/packaging/jpackage-res
 --dest ${project.build.directory}
 --temp ${project.build.directory}/installer-work
 --verbose
